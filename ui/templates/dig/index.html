@@ -1,0 +1,37 @@
+{{ template "layout" . }}
+
+{{ define "title" }}DIG{{ end }}
+
+{{define "content"}}
+<div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">DIG</div>
+
+<div class="rounded-lg border-gray-200 border p-3 pt-0 mt-4">
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">Do you want to know the DNS settings of a domain? It's simple! Enter it in the field below and click "Check".</p>
+</div>
+
+<form action="/dig" method="POST">
+    <div class="grid grid-flow-col justify-stretch mt-6">
+        <div class="mr-4">
+            <label for="domain-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Domain name</label>
+            <input value="{{ .Domain }}" required id="domain-field" class="border border-gray-300 py-2.5 px-3.5 h-11 transition-colors w-full rounded-lg border-gray-300 text-gray-900 text-base shadow-xs focus:border-primary-700 focus:ring-primary-500 disabled:border-gray-200 disabled:bg-gray-50 disabled:cursor-not-allowed" name="domain" type="text">
+        </div>
+        <div>
+            <label for="type-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Type</label>
+            <select required id="type-field" name="type" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-11">
+                {{ range $key, $value := .Types }}
+                    <option {{ if eq $key $.Type }}selected{{ end }} value="{{ $key }}">{{ $value }}</option>
+                {{ end }}
+            </select>
+        </div>
+    </div>
+    <div class="mt-3">
+        <input type="submit" value="Find" class="cursor-pointer ring ring-transparent font-semibold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-gray-300 shadow-xs px-3.5 py-2.5 text-sm rounded-lg h-10 inline-flex justify-center items-center gap-x-2 focus:outline-none focus:ring active:scale-95 transition-all disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-gray-200 hover:disabled:border-transparent disabled:active:scale-100">
+    </div>
+</form>
+
+<div class="mt-8">
+    <pre class="text-md text-gray-800 rounded-lg pt-12 pl-8 pr-8 break-all overflow-auto">
+        {{ .Trace }}
+    </pre>
+</div>
+{{end}}

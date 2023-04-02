@@ -1,0 +1,35 @@
+{{ template "layout" . }}
+
+{{ define "title" }}Generate DKIM signature{{ end }}
+
+{{define "content"}}
+<div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Fill the form to generate DKIM</div>
+
+<div class="rounded-lg border-gray-200 border p-3 pt-0 mt-4">
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">With DKIM, the recipient of an email can identify the sender and verify that it really came from him. DKIM uses a mechanism that uses RSA keys to sign and verify email messages. For implementation, 2 keys are needed: private and public. The email message is signed using the private key. And the public key, which is stored in the DNS record of the domain, is used by the server of the recipient of the letter to verify the identity.</p>
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">To generate DKIM keys, enter your domain, domain selector, and key size in the field below. The domain selector allows you to use several DKIM records for one domain and can consist of any set of Latin letters or numbers.</p>
+</div>
+
+<form action="/dkim/result" method="POST">
+    <div class="grid grid-flow-col justify-stretch mt-6">
+        <div class="mr-4">
+            <label for="domain-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Domain name</label>
+            <input required id="domain-field" class="border border-gray-300 py-2.5 px-3.5 h-11 transition-colors w-full rounded-lg border-gray-300 text-gray-900 text-base shadow-xs focus:border-primary-700 focus:ring-primary-500 disabled:border-gray-200 disabled:bg-gray-50 disabled:cursor-not-allowed" name="domain" type="text">
+        </div>
+        <div class="mr-4">
+            <label for="selector-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Selector</label>
+            <input required id="selector-field" class="border border-gray-300 py-2.5 px-3.5 h-11 transition-colors w-full rounded-lg border-gray-300 text-gray-900 text-base shadow-xs focus:border-primary-700 focus:ring-primary-500 disabled:border-gray-200 disabled:bg-gray-50 disabled:cursor-not-allowed" name="selector" type="text">
+        </div>
+        <div>
+            <label for="length-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Key size</label>
+            <select required id="length-field" name="length" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-11">
+                <option value="1024">1024</option>
+                <option value="2048">2048</option>
+            </select>
+        </div>
+    </div>
+    <div class="mt-3">
+        <input type="submit" value="Generate" class="cursor-pointer ring ring-transparent font-semibold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-gray-300 shadow-xs px-3.5 py-2.5 text-sm rounded-lg h-10 inline-flex justify-center items-center gap-x-2 focus:outline-none focus:ring active:scale-95 transition-all disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-gray-200 hover:disabled:border-transparent disabled:active:scale-100">
+    </div>
+</form>
+{{end}}

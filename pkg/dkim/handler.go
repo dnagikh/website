@@ -1,8 +1,8 @@
 package dkim
 
 import (
+	"github.com/dnagikh/website/pkg/utils"
 	"html/template"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -18,7 +18,7 @@ type ViewData struct {
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/dkim" {
-		http.NotFound(w, r)
+		utils.ErrorHandler(w, r, http.StatusNotFound)
 		return
 	}
 
@@ -30,27 +30,26 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	templates := template.Must(template.ParseFiles(files...))
 	err := templates.ExecuteTemplate(w, "layout", nil)
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 }
 
 func Result(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/dkim/result" {
-		http.NotFound(w, r)
+		utils.ErrorHandler(w, r, http.StatusNotFound)
 		return
 	}
 
 	err := r.ParseForm()
 	if err != nil {
-		log.Println(err.Error())
+		utils.ErrorHandler(w, r, http.StatusBadRequest)
 		return
 	}
 
 	length, err := strconv.Atoi(r.Form.Get("length"))
 	if err != nil || length <= 0 {
-		log.Println("Invalid key length")
+		utils.ErrorHandler(w, r, http.StatusBadRequest)
 		return
 	}
 
@@ -62,7 +61,7 @@ func Result(w http.ResponseWriter, r *http.Request) {
 
 	data.Private, data.Public, err = GenerateRSA(data.Domain, data.Selector, data.Length)
 	if err != nil {
-		log.Println(err.Error())
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 
@@ -74,8 +73,7 @@ func Result(w http.ResponseWriter, r *http.Request) {
 	templates := template.Must(template.ParseFiles(files...))
 	err = templates.ExecuteTemplate(w, "layout", *data)
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 }

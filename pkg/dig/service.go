@@ -2,9 +2,9 @@ package dig
 
 import (
 	"fmt"
+	"github.com/dnagikh/website/pkg/utils"
 	"github.com/lixiangzhong/dnsutil"
 	"net/http"
-	"regexp"
 )
 
 func GetTrace(r *http.Request, data *ViewData) string {
@@ -12,7 +12,7 @@ func GetTrace(r *http.Request, data *ViewData) string {
 		return ""
 	}
 
-	if !isValidDomain(data.Domain) {
+	if !utils.IsValidDomain(data.Domain) {
 		return "Not valid URL"
 	}
 
@@ -24,8 +24,4 @@ func GetTrace(r *http.Request, data *ViewData) string {
 	}
 
 	return msg.String()
-}
-
-func isValidDomain(domain string) bool {
-	return regexp.MustCompile(`^(?i)[a-z0-9-]+(\.[a-z0-9-]+)+\.?$`).MatchString(domain)
 }

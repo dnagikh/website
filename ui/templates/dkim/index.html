@@ -6,8 +6,10 @@
 <div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Fill the form to generate DKIM</div>
 
 <div class="rounded-lg border-gray-200 border p-3 pt-0 mt-4">
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">With DKIM, the recipient of an email can identify the sender and verify that it really came from him. DKIM uses a mechanism that uses RSA keys to sign and verify email messages. For implementation, 2 keys are needed: private and public. The email message is signed using the private key. And the public key, which is stored in the DNS record of the domain, is used by the server of the recipient of the letter to verify the identity.</p>
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">To generate DKIM keys, enter your domain, domain selector, and key size in the field below. The domain selector allows you to use several DKIM records for one domain and can consist of any set of Latin letters or numbers.</p>
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">DKIM (DomainKeys Identified Mail) is a method of email authentication that allows recipients to verify the identity of the sender and ensure that the message has not been altered during transmission. This is achieved by using RSA keys to sign and verify email messages. Two keys are required for implementation: a private key for signing the email message, and a public key that is stored in the DNS record of the sender's domain and used by the recipient's mail server to verify the signature.</p>
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">
+        To generate DKIM keys, provide your domain, domain selector, and key size in the input fields. The domain selector allows you to use multiple DKIM records for a single domain and can be composed of any combination of alphanumeric characters.
+    </p>
 </div>
 
 <form action="/dkim/result" method="POST">

@@ -1,8 +1,8 @@
 package myip
 
 import (
+	"github.com/dnagikh/website/pkg/utils"
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -12,7 +12,7 @@ type ViewData struct {
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/my_ip" {
-		http.NotFound(w, r)
+		utils.ErrorHandler(w, r, http.StatusNotFound)
 		return
 	}
 
@@ -26,8 +26,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		Ip: ReadUserIP(r),
 	})
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 }

@@ -1,0 +1,15 @@
+{{ template "layout" . }}
+
+{{ define "title" }}Page not found{{ end }}
+
+{{define "content"}}
+<div class="flex justify-center flex-col items-center h-full">
+    <div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Page not found</div>
+
+    <div class="mt-8 text-center text-md text-gray-800 w-1/2">It appears that the page you were looking for is on vacation. Please try again later when it's back from sipping margaritas on the beach.</div>
+
+    <div class="mt-8">
+        <a class="px-8 border ring ring-transparent text-gray-700 bg-white border-gray-300 hover:bg-gray-50 focus:ring-gray-300 shadow-xs px-6 py-3 text-base rounded-lg inline-flex gap-x-2 items-center justify-center text-center font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed" href="/">Go home</a>
+    </div>
+</div>
+{{end}}

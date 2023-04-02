@@ -3,10 +3,12 @@
 {{ define "title" }}DIG{{ end }}
 
 {{define "content"}}
-<div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">DIG</div>
+<div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Domain DNS records</div>
 
 <div class="rounded-lg border-gray-200 border p-3 pt-0 mt-4">
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">Do you want to know the DNS settings of a domain? It's simple! Enter it in the field below and click "Check".</p>
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">Are you looking to check the DNS settings for a specific domain?</p>
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">Enter the domain name that you wish to query in the input field provided, and select the type of DNS record that you are interested in (such as A, MX, or TXT, etc.). Once you click the "Check" button, our system will retrieve and display the current DNS data for your domain.</p>
+    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">This can be particularly useful for troubleshooting issues with email delivery, website accessibility, or other network-related problems.</p>
 </div>
 
 <form action="/dig" method="POST">
@@ -25,7 +27,7 @@
         </div>
     </div>
     <div class="mt-3">
-        <input type="submit" value="Find" class="cursor-pointer ring ring-transparent font-semibold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-gray-300 shadow-xs px-3.5 py-2.5 text-sm rounded-lg h-10 inline-flex justify-center items-center gap-x-2 focus:outline-none focus:ring active:scale-95 transition-all disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-gray-200 hover:disabled:border-transparent disabled:active:scale-100">
+        <input type="submit" value="Check" class="cursor-pointer ring ring-transparent font-semibold text-gray-600 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-gray-300 shadow-xs px-3.5 py-2.5 text-sm rounded-lg h-10 inline-flex justify-center items-center gap-x-2 focus:outline-none focus:ring active:scale-95 transition-all disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-gray-200 hover:disabled:border-transparent disabled:active:scale-100">
     </div>
 </form>
 

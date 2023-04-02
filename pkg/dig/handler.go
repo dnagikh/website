@@ -1,8 +1,8 @@
 package dig
 
 import (
+	"github.com/dnagikh/website/pkg/utils"
 	"html/template"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -16,7 +16,7 @@ type ViewData struct {
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/dig" {
-		http.NotFound(w, r)
+		utils.ErrorHandler(w, r, http.StatusNotFound)
 		return
 	}
 
@@ -49,8 +49,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	templates := template.Must(template.ParseFiles(files...))
 	err = templates.ExecuteTemplate(w, "layout", data)
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 }

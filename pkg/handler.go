@@ -1,14 +1,14 @@
 package pkg
 
 import (
+	"github.com/dnagikh/website/pkg/utils"
 	"html/template"
-	"log"
 	"net/http"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 
@@ -20,8 +20,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	templates := template.Must(template.ParseFiles(files...))
 	err := templates.ExecuteTemplate(w, "layout", nil)
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		utils.ErrorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
 }

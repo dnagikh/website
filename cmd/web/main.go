@@ -3,18 +3,19 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/dnagikh/website/cmd/web/router"
 	"log"
 	"net/http"
 )
 
 var (
-	port = flag.Int("port", 8000, "specify port number")
+	port = flag.Int("port", 8001, "specify port number")
 )
 
 func main() {
 	flag.Parse()
 
-	mux := NewRouter()
+	mux := router.NewRouter()
 
 	server := &http.Server{
 		Addr:    fmt.Sprintf(":%d", *port),

@@ -585,6 +585,10 @@ video {
   margin-top: 2rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -657,10 +661,6 @@ video {
   width: 100%;
 }
 
-.w-1\/6 {
-  width: 16.666667%;
-}
-
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -680,6 +680,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .grid-flow-col {
@@ -761,6 +765,10 @@ video {
 
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
 }
 
 .border-gray-200 {

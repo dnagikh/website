@@ -2,8 +2,8 @@ package router
 
 import (
 	"github.com/dnagikh/website/pkg"
-	"github.com/dnagikh/website/pkg/dig"
 	"github.com/dnagikh/website/pkg/dkim"
+	"github.com/dnagikh/website/pkg/dns"
 	"github.com/dnagikh/website/pkg/myip"
 	"net/http"
 	"path/filepath"
@@ -22,7 +22,7 @@ func NewRouter() *http.ServeMux {
 	mux.HandleFunc("/dkim", dkim.Index)
 	mux.HandleFunc("/dkim/result", dkim.Result)
 
-	mux.HandleFunc("/dig", dig.Index)
+	mux.HandleFunc("/dns", dns.Index)
 
 	return mux
 }

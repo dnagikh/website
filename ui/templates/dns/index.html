@@ -14,7 +14,7 @@
 <form action="/dns" method="POST">
     <div class="grid grid-flow-col justify-stretch mt-6">
         <div class="mr-4">
-            <label for="domain-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Domain name</label>
+            <label for="domain-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Domain name (without protocols)</label>
             <input value="{{ .Domain }}" required id="domain-field" class="border border-gray-300 py-2.5 px-3.5 h-11 transition-colors w-full rounded-lg border-gray-300 text-gray-900 text-base shadow-xs focus:border-primary-700 focus:ring-primary-500 disabled:border-gray-200 disabled:bg-gray-50 disabled:cursor-not-allowed" name="domain" type="text">
         </div>
         <div class="mr-4">

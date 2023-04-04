@@ -8,8 +8,9 @@ import (
 )
 
 func checkDNS(domain string, recordType string, dnsServer string) ([]string, error) {
-	if !utils.IsValidDomain(domain) {
-		return nil, fmt.Errorf("bad domain name %q", domain)
+	domain, err := utils.CleanDomain(domain)
+	if err != nil {
+		return nil, err
 	}
 
 	resolver := &net.Resolver{

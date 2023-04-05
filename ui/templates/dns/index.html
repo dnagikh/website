@@ -5,13 +5,7 @@
 {{define "content"}}
 <div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Domain DNS records</div>
 
-<div class="rounded-lg border-gray-200 border p-3 pt-0 mt-4">
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">Are you looking to check the DNS settings for a specific domain?</p>
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">Enter the domain name that you wish to query in the input field provided, choose DNS server and select the type of DNS record that you are interested in (such as A, MX, TXT, etc.). Once you click the "Check" button, our system will retrieve and display the current DNS data for your domain.</p>
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">This can be particularly useful for troubleshooting issues with email delivery, website accessibility, or other network-related problems.</p>
-</div>
-
-<form action="/dns" method="POST">
+<form action="" method="POST">
     <div class="grid grid-flow-col justify-stretch mt-6">
         <div class="mr-4">
             <label for="domain-field" class="block text-sm font-medium text-gray-700 mb-1.5 cursor-pointer">Domain name (without protocols)</label>

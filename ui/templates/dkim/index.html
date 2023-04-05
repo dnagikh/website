@@ -3,14 +3,7 @@
 {{ define "title" }}Generate DKIM signature{{ end }}
 
 {{define "content"}}
-<div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Fill the form to generate DKIM</div>
-
-<div class="rounded-lg border-gray-200 border p-3 pt-0 mt-4">
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">DKIM (DomainKeys Identified Mail) is a method of email authentication that allows recipients to verify the identity of the sender and ensure that the message has not been altered during transmission. This is achieved by using RSA keys to sign and verify email messages. Two keys are required for implementation: a private key for signing the email message, and a public key that is stored in the DNS record of the sender's domain and used by the recipient's mail server to verify the signature.</p>
-    <p class="text-gray-600 mt-3 font-medium text-sm inline-flex items-center gap-x-2">
-        To generate DKIM keys, provide your domain, domain selector, and key size in the input fields. The domain selector allows you to use multiple DKIM records for a single domain and can be composed of any combination of alphanumeric characters.
-    </p>
-</div>
+<div class="text-gray-900 tracking-tight font-semibold text-3xl text-center">Generate DKIM</div>
 
 <form action="/dkim/result" method="POST">
     <div class="grid grid-flow-col justify-stretch mt-6">

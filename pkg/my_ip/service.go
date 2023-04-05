@@ -1,4 +1,4 @@
-package myip
+package my_ip
 
 import "net/http"
 

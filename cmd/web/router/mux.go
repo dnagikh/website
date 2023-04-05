@@ -4,7 +4,9 @@ import (
 	"github.com/dnagikh/website/pkg"
 	"github.com/dnagikh/website/pkg/dkim"
 	"github.com/dnagikh/website/pkg/dns"
-	"github.com/dnagikh/website/pkg/myip"
+	"github.com/dnagikh/website/pkg/domain_ip"
+	"github.com/dnagikh/website/pkg/my_ip"
+	"github.com/dnagikh/website/pkg/ports"
 	"net/http"
 	"path/filepath"
 )
@@ -17,12 +19,12 @@ func NewRouter() *http.ServeMux {
 	mux.Handle("/assets/", http.StripPrefix("/assets", files))
 
 	mux.HandleFunc("/", pkg.Index)
-	mux.HandleFunc("/my_ip", myip.Index)
-
+	mux.HandleFunc("/my_ip", my_ip.Index)
 	mux.HandleFunc("/dkim", dkim.Index)
 	mux.HandleFunc("/dkim/result", dkim.Result)
-
 	mux.HandleFunc("/dns", dns.Index)
+	mux.HandleFunc("/domain_ip", domain_ip.Index)
+	mux.HandleFunc("/ports", ports.Index)
 
 	return mux
 }

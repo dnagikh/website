@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	port = flag.Int("port", 8001, "specify port number")
+	port = flag.Int("port", 8006, "specify port number")
 )
 
 func main() {
